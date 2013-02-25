@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Include Files">
+      <UniqueIdentifier>{06073a9e-7ecb-4026-a888-24932b91ce3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include Files\Standalone">
+      <UniqueIdentifier>{083f3321-63cd-46b9-b282-6230cd79c3fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Messages">
+      <UniqueIdentifier>{4c0cf267-972a-4106-911d-f45bd3fa21bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Protobufs">
+      <UniqueIdentifier>{660fe494-5669-4cac-9743-a94c926c089e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Protobufs">
+      <UniqueIdentifier>{c57ad460-2aec-4599-a7d5-fa272de5d9e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Helpers">
+      <UniqueIdentifier>{b1bbad58-6e93-4a1c-b4ca-f7476dd08427}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Helpers">
+      <UniqueIdentifier>{e1a4fc97-1370-4a52-abd7-375689ef7f99}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Include\OpenSteamClient\SteamClient.hpp">
+      <Filter>Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\OpenSteamClient\SteamUser.hpp">
+      <Filter>Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SteamClientImpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TcpConnection.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\OpenSteamClient\Event.hpp">
+      <Filter>Include Files\Standalone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\OpenSteamClient\Exception.hpp">
+      <Filter>Include Files\Standalone</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\OpenSteamClient\NonCopyable.hpp">
+      <Filter>Include Files\Standalone</Filter>
+    </ClInclude>
+    <ClInclude Include="InputStream.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Messages\MsgChannelEncryptRequest.hpp">
+      <Filter>Header Files\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="Messages\MsgHdr.hpp">
+      <Filter>Header Files\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\OpenSteamClient\Enums.hpp">
+      <Filter>Include Files\Standalone</Filter>
+    </ClInclude>
+    <ClInclude Include="Messages\MsgChannelEncryptResult.hpp">
+      <Filter>Header Files\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="Messages\MsgChannelEncryptResponse.hpp">
+      <Filter>Header Files\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="OutputStream.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SteamUserImpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Protobufs\content_manifest.pb.h">
+      <Filter>Header Files\Protobufs</Filter>
+    </ClInclude>
+    <ClInclude Include="Protobufs\encrypted_app_ticket.pb.h">
+      <Filter>Header Files\Protobufs</Filter>
+    </ClInclude>
+    <ClInclude Include="Protobufs\iclient_objects.pb.h">
+      <Filter>Header Files\Protobufs</Filter>
+    </ClInclude>
+    <ClInclude Include="Protobufs\steammessages_base.pb.h">
+      <Filter>Header Files\Protobufs</Filter>
+    </ClInclude>
+    <ClInclude Include="Protobufs\steammessages_clientserver.pb.h">
+      <Filter>Header Files\Protobufs</Filter>
+    </ClInclude>
+    <ClInclude Include="Messages\MsgHdrProto.hpp">
+      <Filter>Header Files\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="Messages\MsgProto.hpp">
+      <Filter>Header Files\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\OpenSteamClient\SteamId.hpp">
+      <Filter>Include Files\Standalone</Filter>
+    </ClInclude>
+    <ClInclude Include="SteamBaseImpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CryptoHelper.hpp">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="ZipHelper.hpp">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicKeys.hpp">
+      <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Include\OpenSteamClient\SteamFriends.hpp">
+      <Filter>Include Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SteamFriendsImpl.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Messages\MsgHdrExt.hpp">
+      <Filter>Header Files\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="Messages\MsgClientJoinChat.hpp">
+      <Filter>Header Files\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="Messages\MsgClientChatMsg.hpp">
+      <Filter>Header Files\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="Messages\MsgClientChatEnter.hpp">
+      <Filter>Header Files\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="Messages\MsgClientChatMemberInfo.hpp">
+      <Filter>Header Files\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyValues.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SteamClientImpl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TcpConnectionWin32.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InputStream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OutputStream.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SteamUserImpl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Protobufs\content_manifest.pb.cc">
+      <Filter>Source Files\Protobufs</Filter>
+    </ClCompile>
+    <ClCompile Include="Protobufs\encrypted_app_ticket.pb.cc">
+      <Filter>Source Files\Protobufs</Filter>
+    </ClCompile>
+    <ClCompile Include="Protobufs\iclient_objects.pb.cc">
+      <Filter>Source Files\Protobufs</Filter>
+    </ClCompile>
+    <ClCompile Include="Protobufs\steammessages_base.pb.cc">
+      <Filter>Source Files\Protobufs</Filter>
+    </ClCompile>
+    <ClCompile Include="Protobufs\steammessages_clientserver.pb.cc">
+      <Filter>Source Files\Protobufs</Filter>
+    </ClCompile>
+    <ClCompile Include="SteamBaseImpl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PublicKeys.cpp">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="ZipHelper.cpp">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="CryptoHelper.cpp">
+      <Filter>Source Files\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="SteamFriendsImpl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyValues.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
