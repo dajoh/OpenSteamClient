@@ -58,3 +58,8 @@ while(client.IsConnected())
 ```
 
 Make sure to catch any exceptions thrown by SteamClient::Run(), if an exception is thrown you have to recreate the SteamClient object (and SteamFriends, etc) and connect again.
+
+Special Thanks
+--------------
+
+Special thanks to everybody who contributed to SteamKit2, without it this project would never have been created.
