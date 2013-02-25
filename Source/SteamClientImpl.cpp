@@ -139,7 +139,7 @@ namespace Sc
 
 		Delay([=]()
 		{
-			m_parent->OnDisconnect.Call(ev);
+			m_parent->OnDisconnect->Call(ev);
 		});
 	}
 
@@ -155,7 +155,7 @@ namespace Sc
 			{
 				ConnectEvent ev;
 				ev.result = EResult_ConnectFailed;
-				m_parent->OnConnect.Call(ev);
+				m_parent->OnConnect->Call(ev);
 			});
 		}
 	}
@@ -186,16 +186,6 @@ namespace Sc
 		{
 			msg &= ~0x80000000;
 		}
-
-		/*
-		EMsg emsg = (EMsg)msg;
-		if(emsg == EMsg_ClientChatMemberInfo)
-		{
-			FILE *dump = fopen("meminfo_guest.bin", "wb");
-			fwrite(data.c_str(), data.size(), 1, dump);
-			fclose(dump);
-		}
-		*/
 
 		switch(msg)
 		{
@@ -279,7 +269,7 @@ namespace Sc
 		{
 			ConnectEvent ev;
 			ev.result = result.result;
-			m_parent->OnConnect.Call(ev);
+			m_parent->OnConnect->Call(ev);
 		});
 	}
 
@@ -321,10 +311,14 @@ namespace Sc
 	SteamClient::SteamClient()
 	{
 		impl = new Impl(this);
+		OnConnect = new Event<ConnectEvent>();
+		OnDisconnect = new Event<DisconnectEvent>();
 	}
 
 	SteamClient::~SteamClient()
 	{
+		delete OnDisconnect;
+		delete OnConnect;
 		delete impl;
 	}
 

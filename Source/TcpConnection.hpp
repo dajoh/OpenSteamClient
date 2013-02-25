@@ -3,13 +3,12 @@
 
 #include <string>
 #include <OpenSteamClient/Event.hpp>
-#include <OpenSteamClient/NonCopyable.hpp>
 
 namespace Sc
 {
 	using std::string;
 	
-	class TcpConnection : NonCopyable
+	class TcpConnection
 	{
 	public:
 		TcpConnection();
@@ -28,6 +27,9 @@ namespace Sc
 	private:
 		class Impl;
 		Impl *impl;
+
+		TcpConnection(const TcpConnection &);
+		TcpConnection &operator=(const TcpConnection &);
 	};
 }
 

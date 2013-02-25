@@ -76,7 +76,7 @@ namespace Sc
 		uint32_t memberClanPerms;
 	};
 
-	class SteamFriends : NonCopyable
+	class OPENSTEAMCLIENT_EXPORT SteamFriends
 	{
 	public:
 		SteamFriends(SteamClient &client);
@@ -101,16 +101,19 @@ namespace Sc
 		void SendChatMessage(SteamId chatId, const string &msg);
 		void SendFriendMessage(SteamId friendId, const string &msg);
 
-		Event<ChatEnterEvent> OnChatEnter;
-		Event<ChatMessageEvent> OnChatMessage;
-		Event<FriendMessageEvent> OnFriendMessage;
-		Event<PersonaUpdateEvent> OnPersonaUpdate;
-		Event<FriendsListChangedEvent> OnFriendsListChanged;
-		Event<ChatMemberInfoUpdateEvent> OnChatMemberInfoUpdate;
-		Event<ChatMemberStateChangeEvent> OnChatMemberStateChange;
+		Event<ChatEnterEvent> *OnChatEnter;
+		Event<ChatMessageEvent> *OnChatMessage;
+		Event<FriendMessageEvent> *OnFriendMessage;
+		Event<PersonaUpdateEvent> *OnPersonaUpdate;
+		Event<FriendsListChangedEvent> *OnFriendsListChanged;
+		Event<ChatMemberInfoUpdateEvent> *OnChatMemberInfoUpdate;
+		Event<ChatMemberStateChangeEvent> *OnChatMemberStateChange;
 	private:
 		class Impl;
 		Impl *impl;
+
+		SteamFriends(const SteamFriends &);
+		SteamFriends &operator=(const SteamFriends &);
 	};
 }
 

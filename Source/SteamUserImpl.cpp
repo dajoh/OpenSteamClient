@@ -70,7 +70,7 @@ namespace Sc
 			{
 				LoggedOutEvent ev;
 				ev.result = (EResult)msg.proto.eresult();
-				m_parent->OnLoggedOut.Call(ev);
+				m_parent->OnLoggedOut->Call(ev);
 			});
 		}
 	}
@@ -85,7 +85,7 @@ namespace Sc
 			LoggedInEvent ev;
 			ev.result = (EResult)msg.proto.eresult();
 			ev.steamId = msg.header.proto.steamid();
-			m_parent->OnLoggedIn.Call(ev);
+			m_parent->OnLoggedIn->Call(ev);
 		});
 	}
 
@@ -96,10 +96,14 @@ namespace Sc
 	SteamUser::SteamUser(SteamClient &client)
 	{
 		impl = new Impl(this, client.impl);
+		OnLoggedIn = new Event<LoggedInEvent>();
+		OnLoggedOut = new Event<LoggedOutEvent>();
 	}
 
 	SteamUser::~SteamUser()
 	{
+		delete OnLoggedOut;
+		delete OnLoggedIn;
 		delete impl;
 	}
 

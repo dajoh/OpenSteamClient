@@ -26,7 +26,7 @@ namespace Sc
 		EResult result;
 	};
 
-	class SteamUser : NonCopyable
+	class OPENSTEAMCLIENT_EXPORT SteamUser
 	{
 	public:
 		SteamUser(SteamClient &client);
@@ -36,11 +36,14 @@ namespace Sc
 		void LogOut();
 		bool IsLoggedIn() const;
 
-		Event<LoggedInEvent> OnLoggedIn;
-		Event<LoggedOutEvent> OnLoggedOut;
+		Event<LoggedInEvent> *OnLoggedIn;
+		Event<LoggedOutEvent> *OnLoggedOut;
 	private:
 		class Impl;
 		Impl *impl;
+
+		SteamUser(const SteamUser &);
+		SteamUser &operator=(const SteamUser &);
 	};
 }
 

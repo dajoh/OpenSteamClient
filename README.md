@@ -9,11 +9,11 @@ Example Code
 Here's how you connect to the Steam network with OpenSteamClient and set your friend status to online.
 
 ```cpp
-auto client  = Sc::SteamClient();
-auto user    = Sc::SteamUser(client);
-auto friends = Sc::SteamFriends(client);
+Sc::SteamClient client;
+Sc::SteamUser user(client);
+Sc::SteamFriends friends(client);
 
-client.OnConnect.Add([&](Sc::ConnectEvent ev)
+client.OnConnect->Add([&](Sc::ConnectEvent ev)
 {
     if(ev.result == Sc::EResult_OK)
 	{
@@ -28,12 +28,12 @@ client.OnConnect.Add([&](Sc::ConnectEvent ev)
 	}
 });
 
-client.OnDisconnect.Add([&](Sc::DisconnectEvent ev)
+client.OnDisconnect->Add([&](Sc::DisconnectEvent ev)
 {
 	// Disconnected.
 });
 
-user.OnLoggedIn.Add([&](Sc::LoggedInEvent ev)
+user.OnLoggedIn->Add([&](Sc::LoggedInEvent ev)
 {
 	if(ev.result == Sc::EResult_OK)
 	{

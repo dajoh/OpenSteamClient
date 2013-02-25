@@ -15,7 +15,7 @@ namespace Sc
 		const string &data;
 	};
 
-	class SteamClient::Impl : NonCopyable
+	class SteamClient::Impl
 	{
 	public:
 		Impl(SteamClient *parent);
@@ -57,6 +57,9 @@ namespace Sc
 		SteamClient *m_parent;
 		TcpConnection m_connection;
 		list<function<void()>> m_delayedCalls;
+
+		Impl(const Impl &);
+		Impl &operator=(const Impl &);
 	};
 }
 

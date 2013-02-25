@@ -275,7 +275,7 @@ namespace Sc
 
 		m_client->Delay([=]()
 		{
-			m_parent->OnChatEnter.Call(ev);
+			m_parent->OnChatEnter->Call(ev);
 		});
 	}
 
@@ -303,7 +303,7 @@ namespace Sc
 
 			m_client->Delay([=]()
 			{
-				m_parent->OnChatMemberStateChange.Call(ev);
+				m_parent->OnChatMemberStateChange->Call(ev);
 			});
 		}
 		else if(msg.infoType == EChatInfoType_InfoUpdate)
@@ -315,7 +315,7 @@ namespace Sc
 
 			m_client->Delay([=]()
 			{
-				m_parent->OnChatMemberInfoUpdate.Call(ev);
+				m_parent->OnChatMemberInfoUpdate->Call(ev);
 			});
 		}
 	}
@@ -332,7 +332,7 @@ namespace Sc
 
 		m_client->Delay([=]()
 		{
-			m_parent->OnChatMessage.Call(ev);
+			m_parent->OnChatMessage->Call(ev);
 		});
 	}
 
@@ -393,7 +393,7 @@ namespace Sc
 		
 		m_client->Delay([=]()
 		{
-			m_parent->OnFriendsListChanged.Call(ev);
+			m_parent->OnFriendsListChanged->Call(ev);
 		});
 
 		RequestPersonas();
@@ -437,7 +437,7 @@ namespace Sc
 			{
 				PersonaUpdateEvent ev;
 				ev.id = friendId;
-				m_parent->OnPersonaUpdate.Call(ev);
+				m_parent->OnPersonaUpdate->Call(ev);
 			});
 		}
 	}
@@ -453,7 +453,7 @@ namespace Sc
 
 		m_client->Delay([=]()
 		{
-			m_parent->OnFriendMessage.Call(ev);
+			m_parent->OnFriendMessage->Call(ev);
 		});
 	}
 
@@ -476,10 +476,24 @@ namespace Sc
 	SteamFriends::SteamFriends(SteamClient &client)
 	{
 		impl = new Impl(this, client.impl);
+		OnChatEnter = new Event<ChatEnterEvent>();
+		OnChatMessage = new Event<ChatMessageEvent>();
+		OnFriendMessage = new Event<FriendMessageEvent>();
+		OnPersonaUpdate = new Event<PersonaUpdateEvent>();
+		OnFriendsListChanged = new Event<FriendsListChangedEvent>();
+		OnChatMemberInfoUpdate = new Event<ChatMemberInfoUpdateEvent>();
+		OnChatMemberStateChange = new Event<ChatMemberStateChangeEvent>();
 	}
 
 	SteamFriends::~SteamFriends()
 	{
+		delete OnChatMemberStateChange;
+		delete OnChatMemberInfoUpdate;
+		delete OnFriendsListChanged;
+		delete OnPersonaUpdate;
+		delete OnFriendMessage;
+		delete OnChatMessage;
+		delete OnChatEnter;
 		delete impl;
 	}
 
