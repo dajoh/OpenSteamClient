@@ -24,13 +24,15 @@ namespace Sc
 
 	void SteamBaseImpl::HandleMessage(const MessageEvent &ev)
 	{
+		InputStream stream(ev.data);
+
 		switch(ev.msg)
 		{
 		case EMsg_ClientLogOnResponse:
-			HandleLogin(InputStream(ev.data));
+			HandleLogin(stream);
 			break;
 		case EMsg_ClientLoggedOff:
-			HandleLogout(InputStream(ev.data));
+			HandleLogout(stream);
 			break;
 		}
 	}

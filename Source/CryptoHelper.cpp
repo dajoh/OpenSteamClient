@@ -21,7 +21,8 @@ namespace Sc
 
 	void CryptoHelper::RsaSetKey(const string &key)
 	{
-		m_rsaPublicKey.Load(CryptoPP::StringSource(key, true));
+		CryptoPP::StringSource source(key, true);
+		m_rsaPublicKey.Load(source);
 	}
 
 	string CryptoHelper::RsaEncrypt(const string &data)

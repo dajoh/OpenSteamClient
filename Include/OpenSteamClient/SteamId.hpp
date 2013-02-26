@@ -2,6 +2,7 @@
 #define OPENSTEAMCLIENT_STEAMID_HPP
 
 #include <cstdint>
+#include <functional>
 #include "Enums.hpp"
 
 namespace Sc
@@ -143,6 +144,19 @@ namespace Sc
 	{
 		return m_steamId != other.m_steamId;
 	}
+}
+
+namespace std
+{
+	template<>
+	struct hash<Sc::SteamId>
+	{
+		size_t operator()(const Sc::SteamId &id) const
+		{
+			hash<uint64_t> hasher;
+			return hasher(id);
+		}
+	};
 }
 
 #endif

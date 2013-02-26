@@ -33,6 +33,9 @@ solution "OpenSteamClient"
 			libdirs { "ThirdParty/Libraries" }
 			includedirs { "ThirdParty/Include" }
 
+		configuration "linux"
+			buildoptions { "-std=c++11" }
+
 		configuration "Debug"
 			targetsuffix "_sd"
 		configuration "Release"

@@ -63,7 +63,7 @@ namespace Sc
 
 		string m_name;
 		KeyValuesType m_type;
-		unordered_map<string, KeyValues> m_children;
+		unordered_map<string, shared_ptr<KeyValues>> m_children;
 
 		string m_stringValue;
 		wstring m_wstringValue;

@@ -64,7 +64,7 @@ namespace Sc
 		if(name != "")
 		{
 			auto game = msg.proto.add_games_played();
-			game->set_game_id(11409151915401936896);
+			game->set_game_id(11409151915401936896ull);
 			game->set_game_extra_info(name);
 		}
 
@@ -218,27 +218,28 @@ namespace Sc
 
 	void SteamFriends::Impl::HandleMessage(const MessageEvent &ev)
 	{
+		InputStream stream(ev.data);
 		SteamBaseImpl::HandleMessage(ev);
 
 		switch(ev.msg)
 		{
 		case EMsg_ClientChatMsg:
-			HandleChatMessage(InputStream(ev.data));
+			HandleChatMessage(stream);
 			break;
 		case EMsg_ClientChatEnter:
-			HandleChatEnter(InputStream(ev.data));
+			HandleChatEnter(stream);
 			break;
 		case EMsg_ClientFriendsList:
-			HandleFriendsList(InputStream(ev.data));
+			HandleFriendsList(stream);
 			break;
 		case EMsg_ClientPersonaState:
-			HandlePersonaState(InputStream(ev.data));
+			HandlePersonaState(stream);
 			break;
 		case EMsg_ClientChatMemberInfo:
-			HandleChatChange(InputStream(ev.data));
+			HandleChatChange(stream);
 			break;
 		case EMsg_ClientFriendMsgIncoming:
-			HandleFriendMessage(InputStream(ev.data));
+			HandleFriendMessage(stream);
 			break;
 		}
 	}

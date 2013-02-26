@@ -162,15 +162,16 @@ namespace Sc
 
 	KeyValues &KeyValues::operator[](const string &name)
 	{
-		return m_children[name];
+		return *(m_children[name]);
 	}
 
 	const KeyValues &KeyValues::operator[](const string &name) const
 	{
 		auto it = m_children.find(name);
+
 		if(it != m_children.end())
 		{
-			return it->second;
+			return *(it->second);
 		}
 
 		throw Exception("Non-existing KeyValues accessed.");
@@ -195,40 +196,40 @@ namespace Sc
 			switch(type)
 			{
 			case KeyValuesType_None:
-				m_children[name] = KeyValues(name);
-				m_children[name].Parse(stream);
+				m_children[name].reset(new KeyValues(name));
+				m_children[name]->Parse(stream);
 				break;
 			case KeyValuesType_String:
 				stream.ReadNullTerminated(m_stringValue);
-				m_children[name] = KeyValues(name);
-				m_children[name].SetString(m_stringValue);
+				m_children[name].reset(new KeyValues(name));
+				m_children[name]->SetString(m_stringValue);
 				break;
 			case KeyValuesType_Int32:
 				stream.Read<int32_t>(m_int32Value);
-				m_children[name] = KeyValues(name);
-				m_children[name].SetInt32(m_int32Value);
+				m_children[name].reset(new KeyValues(name));
+				m_children[name]->SetInt32(m_int32Value);
 				break;
 			case KeyValuesType_Float32:
 				stream.Read<float32_t>(m_float32Value);
-				m_children[name] = KeyValues(name);
-				m_children[name].SetFloat32(m_float32Value);
+				m_children[name].reset(new KeyValues(name));
+				m_children[name]->SetFloat32(m_float32Value);
 				break;
 			case KeyValuesType_Pointer:
 				stream.Read<uint32_t>(m_uint32Value);
-				m_children[name] = KeyValues(name);
-				m_children[name].SetPointer(m_uint32Value);
+				m_children[name].reset(new KeyValues(name));
+				m_children[name]->SetPointer(m_uint32Value);
 				break;
 			case KeyValuesType_WideString:
 				throw Exception("Not implemented.");
 			case KeyValuesType_Color:
 				stream.Read<uint32_t>(m_uint32Value);
-				m_children[name] = KeyValues(name);
-				m_children[name].SetColor(m_uint32Value);
+				m_children[name].reset(new KeyValues(name));
+				m_children[name]->SetColor(m_uint32Value);
 				break;
 			case KeyValuesType_Uint64:
 				stream.Read<uint64_t>(m_uint64Value);
-				m_children[name] = KeyValues(name);
-				m_children[name].SetUint64(m_uint64Value);
+				m_children[name].reset(new KeyValues(name));
+				m_children[name]->SetUint64(m_uint64Value);
 				break;
 			}
 		}
