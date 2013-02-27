@@ -49,6 +49,8 @@ solution "OpenSteamClient"
 			kind "SharedLib"
 			defines { "OPENSTEAMCLIENT_SHARED" }
 
+		configuration { "linux", "DebugShared or ReleaseShared"}
+			links { "crypto++", "protobuf-lite" }
 		configuration { "windows", "DebugShared" }
 			links { "ws2_32", "cryptopp_d", "libprotobuf-lite_d" }
 		configuration { "windows", "ReleaseShared" }
