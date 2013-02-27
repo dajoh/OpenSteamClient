@@ -3,6 +3,23 @@ OpenSteamClient
 
 An open source C++ library to interface with the Steam network.
 
+Building
+--------
+
+To build, first compile the protobufs with your platform's GenerateProtobufs script. Then use the GenerateProjects script to generate Visual Studio/make project files.
+
+Building on Linux
+-----------------
+
+On Linux, you need to following packages to build OpenSteamClient:
+
+```
+libc6-i386 (if on amd64)
+libcrypto++-dev
+libprotobuf-dev
+protobuf-compiler
+```
+
 Example Code
 ------------
 
