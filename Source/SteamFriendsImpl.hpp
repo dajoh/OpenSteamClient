@@ -16,7 +16,8 @@ namespace Sc
 
 		void SetPersonaName(const string &name);
 		void SetPersonaState(EPersonaState state);
-		void SetPersonaGameName(const string &name);
+		void SetActiveSteamGame(uint32_t appId);
+		void SetActiveNonSteamGame(const string &name);
 
 		const string &GetPersonaName() const;
 		EPersonaState GetPersonaState() const;
@@ -44,7 +45,7 @@ namespace Sc
 		void HandleFriendsList(InputStream &stream);
 		void HandlePersonaState(InputStream &stream);
 		void HandleFriendMessage(InputStream &stream);
-		
+
 		SteamId FixChatId(SteamId id) const;
 
 		string m_name;

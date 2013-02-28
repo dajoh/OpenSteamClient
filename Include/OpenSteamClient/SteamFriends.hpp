@@ -84,7 +84,8 @@ namespace Sc
 
 		void SetPersonaName(const string &name);
 		void SetPersonaState(EPersonaState state);
-		void SetPersonaGameName(const string &name);
+		void SetActiveSteamGame(uint32_t appId);
+		void SetActiveNonSteamGame(const string &name);
 
 		const string &GetPersonaName() const;
 		EPersonaState GetPersonaState() const;

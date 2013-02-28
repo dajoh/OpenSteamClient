@@ -51,11 +51,29 @@ namespace Sc
 		m_client->Send(stream.GetBuffer());
 	}
 
-	void SteamFriends::Impl::SetPersonaGameName(const string &name)
+	void SteamFriends::Impl::SetActiveSteamGame(uint32_t appId)
 	{
 		OutputStream stream;
 		MsgProto<CMsgClientGamesPlayed> msg;
-		CMsgClientGamesPlayed::GamePlayed game;
+
+		msg.header.msg = EMsg_ClientGamesPlayed;
+		msg.header.proto.set_steamid(m_steamId);
+		msg.header.proto.set_client_sessionid(m_sessionId);
+
+		if(appId != 0)
+		{
+			auto game = msg.proto.add_games_played();
+			game->set_game_id(appId);
+		}
+
+		msg.Serialize(stream);
+		m_client->Send(stream.GetBuffer());
+	}
+
+	void SteamFriends::Impl::SetActiveNonSteamGame(const string &name)
+	{
+		OutputStream stream;
+		MsgProto<CMsgClientGamesPlayed> msg;
 
 		msg.header.msg = EMsg_ClientGamesPlayed;
 		msg.header.proto.set_steamid(m_steamId);
@@ -508,9 +526,14 @@ namespace Sc
 		impl->SetPersonaState(state);
 	}
 
-	void SteamFriends::SetPersonaGameName(const string &name)
+	void SteamFriends::SetActiveSteamGame(uint32_t appId)
 	{
-		impl->SetPersonaGameName(name);
+		impl->SetActiveSteamGame(appId);
+	}
+
+	void SteamFriends::SetActiveNonSteamGame(const string &name)
+	{
+		impl->SetActiveNonSteamGame(name);
 	}
 
 	const string &SteamFriends::GetPersonaName() const
