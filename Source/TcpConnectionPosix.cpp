@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <netinet/in.h>
 #include <OpenSteamClient/Exception.hpp>
 #include "TcpConnection.hpp"
 
