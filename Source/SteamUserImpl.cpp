@@ -25,6 +25,7 @@ namespace Sc
 		msg.proto.set_obfustucated_private_ip(0xFFFFFFFF);
 		msg.proto.set_account_name(details.username);
 		msg.proto.set_password(details.password);
+		msg.proto.set_auth_code(details.authCode);
 		msg.proto.set_protocol_version(65575);
 		msg.proto.set_client_os_type(EOSType_WinXP);
 		msg.proto.set_client_language("english");

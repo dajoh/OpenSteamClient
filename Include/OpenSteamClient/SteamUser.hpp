@@ -13,6 +13,7 @@ namespace Sc
 	{
 		string username;
 		string password;
+		string authCode;
 	};
 	
 	struct LoggedInEvent
