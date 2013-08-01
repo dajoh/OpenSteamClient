@@ -25,13 +25,17 @@ namespace Sc
 		msg.proto.set_obfustucated_private_ip(0xFFFFFFFF);
 		msg.proto.set_account_name(details.username);
 		msg.proto.set_password(details.password);
-		msg.proto.set_auth_code(details.authCode);
 		msg.proto.set_protocol_version(65575);
 		msg.proto.set_client_os_type(EOSType_WinXP);
 		msg.proto.set_client_language("english");
 		msg.proto.set_steam2_ticket_request(false);
 		msg.proto.set_client_package_version(1771);
 		msg.proto.set_eresult_sentryfile(EResult_FileNotFound);
+
+		if(details.authCode != "")
+		{
+			msg.proto.set_auth_code(details.authCode);
+		}
 
 		msg.Serialize(stream);
 		m_client->Send(stream.GetBuffer());

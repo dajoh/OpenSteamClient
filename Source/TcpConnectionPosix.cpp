@@ -178,7 +178,7 @@ namespace Sc
 					auto buffer = &m_msgData.get()[pos];
 					auto received = recv(m_socket, buffer, m_msgLeft, 0);
 
-					if(received < 0)
+					if(received <= 0)
 					{
 						closed = true;
 						break;
