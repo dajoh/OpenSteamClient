@@ -126,6 +126,8 @@ namespace Sc
 			}
 		}
 
+		freeaddrinfo(result);
+
 		m_state = State_Connecting;
 	}
 
