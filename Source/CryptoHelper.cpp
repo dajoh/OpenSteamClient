@@ -3,11 +3,11 @@
 
 namespace Sc
 {
-	using std::shared_ptr;
+	using std::unique_ptr;
 
 	string CryptoHelper::RngGenerateBlock(size_t size)
 	{
-		shared_ptr<uint8_t> block(new uint8_t [size]);
+		unique_ptr<uint8_t[]> block(new uint8_t [size]);
 		m_random.GenerateBlock(block.get(), size);
 		return string((char *)block.get(), size);
 	}
@@ -32,7 +32,7 @@ namespace Sc
 		auto inSize = data.size();
 		auto outSize = encryptor.CiphertextLength(inSize);
 		auto input = (const uint8_t *)data.c_str();
-		auto output = shared_ptr<uint8_t>(new uint8_t [outSize]);
+		auto output = unique_ptr<uint8_t[]>(new uint8_t [outSize]);
 
 		encryptor.Encrypt(m_random, input, inSize, output.get());
 		return string((char *)output.get(), outSize);
@@ -45,7 +45,7 @@ namespace Sc
 		auto inSize = data.size();
 		auto outSize = decryptor.CiphertextLength(inSize);
 		auto input = (const uint8_t *)data.c_str();
-		auto output = shared_ptr<uint8_t>(new uint8_t [outSize]);
+		auto output = unique_ptr<uint8_t[]>(new uint8_t [outSize]);
 
 		decryptor.Decrypt(m_random, input, inSize, output.get());
 		return string((char *)output.get(), outSize);
@@ -63,7 +63,7 @@ namespace Sc
 		auto plainSize = plain.size();
 		auto keyData = (const uint8_t *)&m_steamKey[0];
 		auto plainData = (const uint8_t *)&plain[0];
-		auto cipherData = shared_ptr<uint8_t>(new uint8_t [plainSize + 16]);
+		auto cipherData = unique_ptr<uint8_t[]>(new uint8_t [plainSize + 16]);
 		auto cipherIv = cipherData.get() + 0;
 		auto cipherMsg = cipherData.get() + 16;
 

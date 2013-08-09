@@ -9,6 +9,7 @@
 namespace Sc
 {
 	using std::wstring;
+	using std::shared_ptr;
 	using std::unordered_map;
 
 	typedef float float32_t;

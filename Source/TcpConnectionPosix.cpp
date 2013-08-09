@@ -12,6 +12,8 @@
 
 namespace Sc
 {
+	using std::unique_ptr;
+
 	class TcpConnection::Impl
 	{
 	public:
@@ -46,7 +48,7 @@ namespace Sc
 		size_t m_msgSize;
 		size_t m_msgLeft;
 		TcpConnection *m_parent;
-		shared_ptr<char> m_msgData;
+		unique_ptr<char[]> m_msgData;
 	};
 
 	// ------------------------------------------------------------------------

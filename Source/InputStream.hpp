@@ -8,7 +8,7 @@
 namespace Sc
 {
 	using std::string;
-	using std::shared_ptr;
+	using std::unique_ptr;
 	using google::protobuf::MessageLite;
 
 	class InputStream
@@ -46,7 +46,7 @@ namespace Sc
 	template<>
 	inline void InputStream::Read<string>(string &value, size_t size)
 	{
-		auto buffer = shared_ptr<char>(new char [size]);
+		unique_ptr<char[]> buffer(new char [size]);
 		ReadRaw(buffer.get(), size);
 		value = string(buffer.get(), size);
 	}

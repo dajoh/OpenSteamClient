@@ -9,7 +9,7 @@ namespace Sc
 {
 	using std::list;
 	using std::function;
-	using std::shared_ptr;
+	using std::unique_ptr;
 	
 	template<class T>
 	class Event
@@ -22,7 +22,7 @@ namespace Sc
 		void Remove(HandlerId id);
 		void Call(const T &t) const;
 	private:
-		list<shared_ptr<Handler>> m_handlers;
+		list<unique_ptr<Handler>> m_handlers;
 	};
 
 	template<>
@@ -36,7 +36,7 @@ namespace Sc
 		void Remove(HandlerId id);
 		void Call() const;
 	private:
-		list<shared_ptr<Handler>> m_handlers;
+		list<unique_ptr<Handler>> m_handlers;
 	};
 
 	// ------------------------------------------------------------------------
@@ -47,7 +47,7 @@ namespace Sc
 	inline typename Event<T>::HandlerId Event<T>::Add(Handler fn)
 	{
 		auto id = new Handler(fn);
-		m_handlers.push_back(shared_ptr<Handler>(id));
+		m_handlers.push_back(unique_ptr<Handler>(id));
 		return id;
 	}
 
@@ -80,7 +80,7 @@ namespace Sc
 	inline Event<void>::HandlerId Event<void>::Add(Handler fn)
 	{
 		auto id = new Handler(fn);
-		m_handlers.push_back(shared_ptr<Handler>(id));
+		m_handlers.push_back(unique_ptr<Handler>(id));
 		return id;
 	}
 
