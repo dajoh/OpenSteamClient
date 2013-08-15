@@ -288,7 +288,7 @@ namespace Sc
 		{
 			auto kv = *it;
 			auto id = kv["steamid"].GetUint64();
-			ev.memberChatPerms[id] = kv["Permissions"].GetInt32();
+			ev.memberChatPerms[id] = kv["permissions"].GetInt32();
 			ev.memberClanPerms[id] = kv["Details"].GetInt32();
 		}
 
@@ -311,7 +311,7 @@ namespace Sc
 
 			if(msg.stateChange.stateChange == EChatMemberStateChange_Entered)
 			{
-				ev.memberChatPerms = msg.stateChange.memberInfo["Permissions"].GetInt32();
+				ev.memberChatPerms = msg.stateChange.memberInfo["permissions"].GetInt32();
 				ev.memberClanPerms = msg.stateChange.memberInfo["Details"].GetInt32();
 			}
 			else
@@ -329,7 +329,7 @@ namespace Sc
 		{
 			ChatMemberInfoUpdateEvent ev;
 			ev.memberId = msg.infoUpdate.memberInfo["steamid"].GetUint64();
-			ev.memberChatPerms = msg.stateChange.memberInfo["Permissions"].GetInt32();
+			ev.memberChatPerms = msg.stateChange.memberInfo["permissions"].GetInt32();
 			ev.memberClanPerms = msg.stateChange.memberInfo["Details"].GetInt32();
 
 			m_client->Delay([=]()
@@ -469,6 +469,9 @@ namespace Sc
 		ev.msg = msg.proto.message();
 		ev.type = (EChatEntryType)msg.proto.chat_entry_type();
 		ev.friendId = msg.proto.steamid_from();
+
+		// Remove null terminator.
+		ev.msg.pop_back();
 
 		m_client->Delay([=]()
 		{
