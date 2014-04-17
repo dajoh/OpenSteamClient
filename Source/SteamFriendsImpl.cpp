@@ -329,8 +329,8 @@ namespace Sc
 		{
 			ChatMemberInfoUpdateEvent ev;
 			ev.memberId = msg.infoUpdate.memberInfo["steamid"].GetUint64();
-			ev.memberChatPerms = msg.stateChange.memberInfo["permissions"].GetInt32();
-			ev.memberClanPerms = msg.stateChange.memberInfo["Details"].GetInt32();
+			ev.memberChatPerms = msg.infoUpdate.memberInfo["permissions"].GetInt32();
+			ev.memberClanPerms = msg.infoUpdate.memberInfo["Details"].GetInt32();
 
 			m_client->Delay([=]()
 			{
